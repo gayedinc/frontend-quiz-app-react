@@ -15,32 +15,29 @@ function App() {
     getData();
   }, []);
 
-  // dark temayı localstorage'a kaydedebilmek için
+  // Dark tema için useEffect
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'dark') {
-      setIsDarkMode(true);
-      document.body.classList.add('dark-mode');
-    } else {
-      setIsDarkMode(false);
-      document.body.classList.remove('dark-mode');
+    const savedTheme = window.localStorage.theme; // localStorage'dan tema bilgisi almak için
+    if (savedTheme === 'dark') { // eğer kayıtlı tema dark ise
+      setIsDarkMode(true); // dark moda geç
     }
   }, []);
+
+  // Tema değiştiğinde localStorage'a kaydetmek için useEffect
+  useEffect(() => {
+    window.localStorage.theme = isDarkMode && 'dark'; // isDarkMode true ise dark yap
+    document.body.classList.toggle('dark-mode', isDarkMode); // body'e temayı uygula
+  }, [isDarkMode]); // isDarkMode değişkenini takip et ve her değiştiğinde çalıştır
+
+  // Tema değiştirme fonksiyonu
+  const toggleTheme = () => {
+    setIsDarkMode((prevMode) => !prevMode); // dark ise dark yapma, dark değilse dark yap
+  };
 
   // eğer quizler yüklenmezse loading yazısnın çıkması için
   if (!quizData) {
     return <div className="loading">Loading...</div>;
   }
-
-  // temanın çalışmasını sağlayan fonksiyon
-  const toggleTheme = () => {
-    setIsDarkMode(prevMode => {
-      const newMode = !prevMode;
-      localStorage.setItem('theme', newMode ? 'dark' : 'light');
-      document.body.classList.toggle('dark-mode', newMode);
-      return newMode;
-    });
-  };
 
   return (
     <>
