@@ -5,12 +5,14 @@ function App() {
   const [quizData, setQuizData] = useState(null); // tüm quiz sorularının tutulduğu state
   const [selectedCategory, setSelectedCategory] = useState(null); // seçilen kategorinin tutulduğu state
   const [isDarkMode, setIsDarkMode] = useState(false); // dark mode için olan state
+  const [isLoading, setIsLoading] = useState(true); // loading durumu için olan state
 
   // soruları data.json dosyasından çekmek için
   useEffect(() => {
     async function getData() {
       const { quizzes } = await fetch("/data/data.json").then((x) => x.json());
       setQuizData(quizzes);
+      setIsLoading(false);
     }
     getData();
   }, []);
@@ -34,13 +36,9 @@ function App() {
     setIsDarkMode((prevMode) => !prevMode); // dark ise dark yapma, dark değilse dark yap
   };
 
-  // eğer quizler yüklenmezse loading yazısnın çıkması için
-  if (!quizData) {
-    return <div className="loading">Loading...</div>;
-  }
-
   return (
     <>
+      {isLoading && <div className="loading">Loading...</div>}
       <div className="container">
         {!selectedCategory ? (
           <>
