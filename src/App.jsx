@@ -4,7 +4,6 @@ import "./assets/css/darkMode.css";
 function App() {
   const [quizData, setQuizData] = useState(null); // tüm quiz sorularının tutulduğu state
   const [selectedCategory, setSelectedCategory] = useState(null); // seçilen kategorinin tutulduğu state
-  const [isDarkMode, setIsDarkMode] = useState(false); // dark mode için olan state
   const [isLoading, setIsLoading] = useState(true); // loading durumu için olan state
 
   // soruları data.json dosyasından çekmek için
@@ -17,24 +16,21 @@ function App() {
     getData();
   }, []);
 
-  // Dark tema için useEffect
-  useEffect(() => {
-    const savedTheme = window.localStorage.theme; // localStorage'dan tema bilgisi almak için
-    if (savedTheme === 'dark') { // eğer kayıtlı tema dark ise
-      setIsDarkMode(true); // dark moda geç
-    }
-  }, []);
+  function getSystemThemePref() {
+    return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark-mode' : 'light';
+  }
 
-  // Tema değiştiğinde localStorage'a kaydetmek için useEffect
-  useEffect(() => {
-    window.localStorage.theme = isDarkMode && 'dark'; // isDarkMode true ise dark yap
-    document.body.classList.toggle('dark-mode', isDarkMode); // body'e temayı uygula
-  }, [isDarkMode]); // isDarkMode değişkenini takip et ve her değiştiğinde çalıştır
+  const [theme, setTheme] = useState(localStorage.theme || getSystemThemePref()); // dark mode için olan state
 
-  // Tema değiştirme fonksiyonu
-  const toggleTheme = () => {
-    setIsDarkMode((prevMode) => !prevMode); // dark ise dark yapma, dark değilse dark yap
-  };
+  useEffect(() => {
+    document.body.className = theme;
+  }, [theme]);
+
+  function handleChange(e) {
+    const changedTheme = e.target.checked ? 'dark-mode' : 'light';
+    setTheme(changedTheme);
+    localStorage.theme = changedTheme;
+  }
 
   return (
     <>
@@ -43,23 +39,23 @@ function App() {
         {!selectedCategory ? (
           <>
             <Header selectedCategory={selectedCategory}
-              isDarkMode={isDarkMode}
-              toggleTheme={toggleTheme} />
+              theme={theme}
+              handleChange={handleChange} />
             <WelcomePage quizData={quizData} setSelectedCategory={setSelectedCategory} />
           </>
         ) :
 
           (<>
             <Header selectedCategory={selectedCategory}
-              isDarkMode={isDarkMode}
-              toggleTheme={toggleTheme} />
+              theme={theme}
+              handleChange={handleChange} />
             <Questions quizData={quizData} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} /></>)}
       </div>
     </>
   )
 }
 
-function Header({ isDarkMode, selectedCategory, toggleTheme }) {
+function Header({ theme, selectedCategory, handleChange }) {
   return (
     <>
       <div className="header">
@@ -74,9 +70,9 @@ function Header({ isDarkMode, selectedCategory, toggleTheme }) {
         }
         <div className="themeOptions">
           <label className="lightDark">
-            <span><img src={isDarkMode ? "img/dark-sun-icon.svg" : "img/sun-light-icon.svg"} alt="Light Mode Icon" /></span>
-            <input onChange={toggleTheme} className="switch" type="checkbox" checked={isDarkMode} />
-            <span><img src={isDarkMode ? "img/dark-moon-icon.svg" : "img/moon-night-icon.svg"} alt="Dark Mode Icon" /></span>
+            <span><img src={theme === "light" ? "img/sun-light-icon.svg" : "img/dark-sun-icon.svg"} alt="Light Mode Icon" /></span>
+            <input onChange={handleChange} className="switch" type="checkbox" defaultChecked={theme === "dark-mode"} />
+            <span><img src={theme === "light" ? "img/moon-night-icon.svg" : "img/dark-moon-icon.svg"} alt="Dark Mode Icon" /></span>
           </label>
         </div>
       </div>
