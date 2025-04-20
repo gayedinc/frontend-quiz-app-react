@@ -1,85 +1,99 @@
 # 🧠 Frontend Quiz App – React
 
-> Kullanıcıların frontend konularında kendilerini test edebileceği, kategori bazlı soru sistemi, anlık geri bildirim ve tema desteği sunan modern bir React quiz uygulaması.
+> A modern React-based quiz application that allows users to test their knowledge on frontend topics with category-based questions, instant feedback, and theme support.
 
 ![React](https://img.shields.io/badge/React-20232A?style=for-the-badge&logo=react)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript)
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 
-## 🔍 Proje Genel Bakış
+## 🔍 Project Overview
 
-**Frontend Quiz App** kullanıcıların HTML, CSS, JavaScript ve Accessibility gibi farklı frontend kategorilerinde quiz çözmesini sağlayan bir uygulamadır.  
-Vanilla JS sürümünün ardından React ile yeniden geliştirilen bu versiyon bileşen tabanlı mimarisiyle daha esnek, yönetilebilir ve kullanıcı dostu bir deneyim sunar.
+**Frontend Quiz App** is a web application that allows users to solve quizzes in various frontend categories like HTML, CSS, JavaScript, and Accessibility.  
+After the initial version built with Vanilla JS, this React-based version offers a more modular, manageable, and user-friendly experience through its component-based architecture.
 
 ![image](https://github.com/user-attachments/assets/858825dc-7076-4467-94f6-dde0c6c1e55f)
 
-## 🚀 Temel Özellikler
+## 🚀 Key Features
 
-### 📂 Dinamik Soru Kategorileri
-- Kullanıcı başlangıç ekranında HTML, CSS, JavaScript ve Accessibility konularını içeren **kategori seçeneklerinden** birini seçebilir.
-- Her kategoriye ait sorular farklı dosyalarda tutulur ve dinamik olarak yüklenir.
+### 📂 Dynamic Question Categories
+- On the welcome screen, users can select from category options such as **HTML**, **CSS**, **JavaScript**, and **Accessibility**.
+- Each category loads questions from different JSON data files dynamically.
 
 ![image](https://github.com/user-attachments/assets/27469877-adec-4fa0-a210-be9b1dcba4f5)
 
-### 🌗 Tema Seçimi (Dark/Light)
-- Kullanıcılar arayüzü karanlık veya aydınlık modda kullanabilir.
-- Tercihler `localStorage`'da saklanır, sayfa yenilense bile aynı tema korunur.
+### 🌗 Theme Toggle (Dark/Light)
+- Users can switch between light and dark modes.
+- The selected theme is stored in `localStorage` and remains persistent even after page reloads.
 
 ![image](https://github.com/user-attachments/assets/c081bed1-7bc0-490f-93bc-b84dc9121462)
 
-### 📊 Anında Geri Bildirim & Sonuç Ekranı
-- Her soruya verilen yanıtın doğru veya yanlış olduğu **hemen gösterilir**.
+### 📊 Instant Feedback, Animations & Result Screen
+- The app instantly shows whether the selected answer is **correct or incorrect**.
 
-![image](https://github.com/user-attachments/assets/3b1a680e-9973-4559-bd7d-a929c9786816)
+![image](https://github.com/user-attachments/assets/f30c6e4a-59f1-460c-9d93-18dbb0482031)
 
-- Quiz sonunda kullanıcıya toplam doğru sayısı ve görsel başarı durumu sunulur.
+- When the user selects the **wrong answer**, the choice visually shakes using a `shake` animation.  
+- The **correct answer** is highlighted with a `pulse` animation (scaling up and down) for emphasis.
+This enhances user interaction and visual clarity.
 
-![image](https://github.com/user-attachments/assets/8943e626-cf33-4da5-a55b-fc39e8b38993)
+![image](https://github.com/user-attachments/assets/9747aa79-ece8-4059-bdbd-e37d565affb2)
 
-### ⚛️ React Bileşen Yapısı
-- Uygulama tamamen **bileşen tabanlı** geliştirildi.
-- Kategoriler, sorular, cevap şıkları ve sonuç ekranı gibi her bölüm kendi bileşeninde yönetilir.
-- State yönetimi ve event handling işlemleri sade ve etkili biçimde yürütülür.
+- At the end of the quiz, the total number of correct answers is displayed with visual feedback.
 
-### 💾 Kalıcı Ayarlar
-- Tema tercihleri gibi kullanıcı ayarları `localStorage` kullanılarak saklanır.
+- Additionally, when the result screen appears, a **celebration confetti animation** begins using the `react-confetti` library 🎉  
+This confetti continues **until the user returns to the main screen**.
 
-### 📱 Responsive Tasarım
-- Tüm cihazlarda sorunsuz çalışır: mobil, tablet ve masaüstü uyumludur.
-- Duyarlı tasarım sayesinde kullanıcı deneyimi her platformda tutarlıdır.
+![image](https://github.com/user-attachments/assets/495d3f64-3a0f-4cf1-b395-c02980ec4c30)
 
-## 💡 Kullanıcı Deneyimi & Hedeflerim
+### ⚛️ Component-Based Structure
+- The app is fully built using **React components**.
+- Categories, questions, choices, and the result screen are each handled in separate components.
+- State management and event handling are implemented in a clean and effective way.
 
-- **Akıcı ve hızlı quiz deneyimi** sunmak  
-- Kullanıcının kategori bazlı ilerlemesini desteklemek  
-- Tema tercihlerinin kalıcı olmasını sağlamak  
-- Yanıtlara anında geri bildirim vererek kullanıcıyı teşvik etmek  
-- Kodun sürdürülebilir ve anlaşılır yapıda kalmasına özen göstermek  
+### 💾 Persistent Settings
+- User preferences like selected theme are stored in `localStorage`.
 
-## 🛠️ Kullanılan Teknolojiler
+### 📱 Responsive Design
+- Works flawlessly across all devices: mobile, tablet, and desktop.
+- Responsive layout ensures consistent user experience on every screen.
+
+## 💡 UX Goals & Development Focus
+
+- Delivering a **fast and fluid quiz experience**  
+- Supporting **category-based question navigation**  
+- Making **theme preferences persistent**  
+- Providing **immediate visual feedback** for each answer  
+- Offering a **celebratory result screen** with confetti animation  
+- Keeping the codebase **clean, readable, and maintainable**
+
+## 🛠️ Technologies Used
 
 - React  
 - JavaScript (ES6+)  
 - CSS3  
 - localStorage  
+- react-confetti  
+- CSS Animations (`shake`, `pulse`)  
 - Responsive Design (Media Queries, Flexbox)
 
-🟢 **Canlı Demo:**  
+🟢 **Live Demo:**  
 🔗 [https://frontend-quiz-app-react.vercel.app](https://frontend-quiz-app-react.vercel.app)
 
-## 📂 Proje Yapısı
+## 📂 Project Structure
 
+```bash
 📁 public  
 📁 src  
  ┣ 📁 assets  
- ┃ ┣ 📄 css                    # Stil dosyaları  
- ┃ ┗ 📄 images                 # UI ikonları ve logolar  
- ┣ 📁 components               # Reusable React bileşenleri  
- ┣ 📁 data                     # Soru verileri (JSON formatında)  
- ┣ 📄 App.jsx                  # Ana uygulama bileşeni  
+ ┃ ┗ 📁 css  
+ ┃    ┣ 📄 darkMode.css         # Dark mode styles  
+ ┃    ┣ 📄 main.css             # General styles  
+ ┃    ┗ 📄 reset.css            # CSS reset rules  
+ ┣ 📁 components                # All React components  
+ ┃ ┣ 📄 Header.jsx             # Header and theme toggle component  
+ ┃ ┣ 📄 Questions.jsx          # Question-answer flow and result screen  
+ ┃ ┗ 📄 WelcomePage.jsx        # Category selection and welcome screen  
+ ┣ 📄 App.jsx                  # Main application component  
  ┣ 📄 main.jsx                 # React DOM entry point  
- ┗ 📄 index.html               # HTML şablonu  
-
-📄 package.json                # Proje bağımlılıkları  
-📄 README.md                   # Proje açıklamaları  
+┗ 📄 index.html                # Application HTML template  
