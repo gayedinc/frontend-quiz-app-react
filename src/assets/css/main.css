@@ -224,20 +224,20 @@
 }
 
 .choiceBtn.selected {
-  background-color: #A729F5;
-  color: #fff;
+  background-color: #A729F5 !important;
+  color: #fff !important;
   border-radius: 6px;
 }
 
 .choiceBtn.correct.selected {
-  color: #fff;
-  background-color: #26D782;
+  color: #fff !important;
+  background-color: #26D782 !important;
   border-radius: 6px;
 }
 
 .choiceBtn.wrong {
-  color: #fff;
-  background-color: red;
+  color: #fff !important;
+  background-color: red !important; 
   border-radius: 6px;
 }
 
@@ -251,6 +251,7 @@
   width: 100%;
   border-style: none;
   border-radius: 12px;
+  cursor: pointer;
 }
 
 .playBtn button {
@@ -330,9 +331,41 @@
   }
 }
 
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-5px); }
+  40%, 80% { transform: translateX(5px); }
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.08); }
+  100% { transform: scale(1); }
+}
+
+.shake {
+  animation: shake 0.4s ease-in-out;
+}
+
+.pulse {
+  animation: pulse 0.4s ease-in-out;
+}
+
+
 /* Tablet Start */
 
 @media (width > 375px) {
+
+  .submit-next-btns button:hover, .playBtn button:hover {
+    background-color: #d394fa;
+  }
+
+  .optionBtn:hover  {
+    .choiceBtn {
+      background-color: #F6E7FF;
+      color: #A729F5;
+    }
+  }
 
   .container {
     background-image: url("/img/tablet-light-circle.svg");
@@ -429,6 +462,7 @@
     padding: 14px 18px;
     font-size: 28px;
     line-height: 28px;
+    cursor: pointer;
   }
 
   .result-text {
@@ -570,6 +604,7 @@
     gap: 32px;
     width: 564px;
     height: 92px;
+    cursor: pointer;
   }
 
   .optionBtn p {
