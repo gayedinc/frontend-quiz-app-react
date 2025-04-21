@@ -8,6 +8,7 @@ export default function Questions({ quizData, selectedCategory, setSelectedCateg
   const [isSubmitted, setIsSubmitted] = useState(false); // submit butonuna basılma durumunu tutan state
   const [correctAnswerCount, setCorrectAnswerCount] = useState(0); // doğru cevapları tutan state
   const [showWarning, setShowWarning] = useState(false); // uyarı mesajının gösterilmesi için state
+  const [showResult, setShowResult] = useState(false);
 
   // seçilen kategoriye ait soruları getiren değişken
   const selectedQuiz = quizData?.find(
@@ -17,12 +18,16 @@ export default function Questions({ quizData, selectedCategory, setSelectedCateg
   // doğru cevabın tespiti
   const correctAnswer = selectedQuiz.questions[currentQuestionIndex].answer;
 
+  const isLastQuestion = currentQuestionIndex === selectedQuiz.questions.length - 1;
+
   // her bir şık için
   const selections = ["A", "B", "C", "D"];
 
   // yeni soruya geçişi sağlayan fonksiyon
   function handleNextQuestion() {
-    if (currentQuestionIndex < selectedQuiz.questions.length - 1) {
+    if (isLastQuestion) {
+      setShowResult(true);
+    } else {
       setCurrentQuestionIndex(currentQuestionIndex + 1);
       setSelectedChoice(null);
       setIsSubmitted(false);
@@ -56,8 +61,7 @@ export default function Questions({ quizData, selectedCategory, setSelectedCateg
   return (
     <>
       <div className="question-area">
-        {isSubmitted && currentQuestionIndex === selectedQuiz.questions.length - 1 ?
-
+        {showResult ?
           (<ResultPage
             correctAnswerCount={correctAnswerCount}
             selectedQuiz={selectedQuiz}
@@ -105,7 +109,9 @@ export default function Questions({ quizData, selectedCategory, setSelectedCateg
                 ))}
                 <div className="submit-next-btns">
                   {isSubmitted ?
-                    (<button onClick={handleNextQuestion}>Next Question</button>)
+                    (<button onClick={handleNextQuestion}>
+                      {isLastQuestion ? "See Result" : "Next Question"}
+                    </button>)
                     :
                     (<button onClick={handleSubmit}>Submit</button>)
                   }
