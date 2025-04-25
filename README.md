@@ -1,4 +1,4 @@
-# 🧠 Frontend Quiz App – React
+# Frontend Quiz App – React
 
 > A modern React-based quiz application that allows users to test their knowledge on frontend topics with category-based questions, instant feedback, and theme support.
 
@@ -7,28 +7,28 @@
 ![CSS](https://img.shields.io/badge/CSS-1572B6?style=for-the-badge&logo=css3)
 ![HTML](https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5)
 
-## 🔍 Project Overview
+## Project Overview
 
 **Frontend Quiz App** is a web application that allows users to solve quizzes in various frontend categories like HTML, CSS, JavaScript, and Accessibility.  
 After the initial version built with Vanilla JS, this React-based version offers a more modular, manageable, and user-friendly experience through its component-based architecture.
 
 ![image](https://github.com/user-attachments/assets/858825dc-7076-4467-94f6-dde0c6c1e55f)
 
-## 🚀 Key Features
+## Key Features
 
-### 📂 Dynamic Question Categories
+### Dynamic Question Categories
 - On the welcome screen, users can select from category options such as **HTML**, **CSS**, **JavaScript**, and **Accessibility**.
 - Each category loads questions from different JSON data files dynamically.
 
 ![image](https://github.com/user-attachments/assets/27469877-adec-4fa0-a210-be9b1dcba4f5)
 
-### 🌗 Theme Toggle (Dark/Light)
+### Theme Toggle (Dark/Light)
 - Users can switch between light and dark modes.
 - The selected theme is stored in `localStorage` and remains persistent even after page reloads.
 
 ![image](https://github.com/user-attachments/assets/c081bed1-7bc0-490f-93bc-b84dc9121462)
 
-### 📊 Instant Feedback, Animations & Result Screen
+### Instant Feedback, Animations & Result Screen
 - The app instantly shows whether the selected answer is **correct or incorrect**.
 
 ![image](https://github.com/user-attachments/assets/f30c6e4a-59f1-460c-9d93-18dbb0482031)
@@ -46,19 +46,19 @@ This confetti continues **until the user returns to the main screen**.
 
 ![image](https://github.com/user-attachments/assets/495d3f64-3a0f-4cf1-b395-c02980ec4c30)
 
-### ⚛️ Component-Based Structure
+### Component-Based Structure
 - The app is fully built using **React components**.
 - Categories, questions, choices, and the result screen are each handled in separate components.
 - State management and event handling are implemented in a clean and effective way.
 
-### 💾 Persistent Settings
+### Persistent Settings
 - User preferences like selected theme are stored in `localStorage`.
 
-### 📱 Responsive Design
+### Responsive Design
 - Works flawlessly across all devices: mobile, tablet, and desktop.
 - Responsive layout ensures consistent user experience on every screen.
 
-## 💡 UX Goals & Development Focus
+## UX Goals & Development Focus
 
 - Delivering a **fast and fluid quiz experience**  
 - Supporting **category-based question navigation**  
@@ -67,7 +67,7 @@ This confetti continues **until the user returns to the main screen**.
 - Offering a **celebratory result screen** with confetti animation  
 - Keeping the codebase **clean, readable, and maintainable**
 
-## 🛠️ Technologies Used
+## Technologies Used
 
 - React  
 - JavaScript (ES6+)  
@@ -77,23 +77,65 @@ This confetti continues **until the user returns to the main screen**.
 - CSS Animations (`shake`, `pulse`)  
 - Responsive Design (Media Queries, Flexbox)
 
-🟢 **Live Demo:**  
-🔗 [https://frontend-quiz-app-react.vercel.app](https://frontend-quiz-app-react.vercel.app)
+**Live Demo:**  
+[https://frontend-quiz-app-react.vercel.app](https://frontend-quiz-app-react.vercel.app)
 
-## 📂 Project Structure
+## Installation & Running Locally
+
+To run this project on your local machine, follow the steps below:
+
+### 1. Clone the Repository
 
 ```bash
-📁 public  
-📁 src  
- ┣ 📁 assets  
- ┃ ┗ 📁 css  
- ┃    ┣ 📄 darkMode.css         # Dark mode styles  
- ┃    ┣ 📄 main.css             # General styles  
- ┃    ┗ 📄 reset.css            # CSS reset rules  
- ┣ 📁 components                # All React components  
- ┃ ┣ 📄 Header.jsx             # Header and theme toggle component  
- ┃ ┣ 📄 Questions.jsx          # Question-answer flow and result screen  
- ┃ ┗ 📄 WelcomePage.jsx        # Category selection and welcome screen  
- ┣ 📄 App.jsx                  # Main application component  
- ┣ 📄 main.jsx                 # React DOM entry point  
-┗ 📄 index.html                # Application HTML template  
+git clone https://github.com/your-username/frontend-quiz-app-react.git
+```
+
+If you don’t have Git installed, you can download it from [https://git-scm.com](https://git-scm.com).
+
+### 2. Navigate into the Project Directory
+
+```bash
+cd frontend-quiz-app-react
+```
+
+### 3. Install Dependencies
+
+If you haven’t already, install Node.js and npm (or yarn) from [https://nodejs.org](https://nodejs.org).
+
+```bash
+npm install
+# or
+yarn install
+```
+
+### 4. Start the Development Server
+
+```bash
+npm run dev
+# or
+yarn dev
+```
+
+By default, the app should run at [http://localhost:5173](http://localhost:5173).
+
+### 5. Open in Browser
+
+Visit the local URL in your browser to start using the application.
+
+## Project Structure
+
+```bash
+ public  
+ src  
+ ┣  assets  
+ ┃ ┗  css  
+ ┃    ┣  darkMode.css         # Dark mode styles  
+ ┃    ┣  main.css             # General styles  
+ ┃    ┗  reset.css            # CSS reset rules  
+ ┣  components                # All React components  
+ ┃ ┣  Header.jsx             # Header and theme toggle component  
+ ┃ ┣  Questions.jsx          # Question-answer flow and result screen  
+ ┃ ┗  WelcomePage.jsx        # Category selection and welcome screen  
+ ┣  App.jsx                  # Main application component  
+ ┣  main.jsx                 # React DOM entry point  
+┗  index.html                # Application HTML template  
