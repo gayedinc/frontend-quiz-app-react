@@ -87,7 +87,7 @@ To run this project on your local machine, follow the steps below:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/frontend-quiz-app-react.git
+git clone https://github.com/gayedinc/frontend-quiz-app-react.git
 ```
 
 If you don’t have Git installed, you can download it from [https://git-scm.com](https://git-scm.com).
